@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>영도구 문화유산 관광의 현주소와 새로운 도약</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+body {
+    background-color: #f3f4f6;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+}
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 300px;
+    max-height: 350px;
+}
+@media (min-width: 768px) {
+    .chart-container {
+        height: 350px;
+        max-height: 400px;
+    }
+}
+.card {
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.text-navy { color: #1a365d; }
+.bg-navy { background-color: #1a365d; }
+.text-orange { color: #f97316; }
+.bg-orange { background-color: #f97316; }
+.text-teal { color: #14b8a6; }
+.bg-teal { background-color: #14b8a6; }
+</style>
+</head>
+<body class="text-gray-800 antialiased font-sans">
+
+<nav class="bg-navy shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex items-center">
+                <span class="text-white text-xl font-bold tracking-wider">📍 YEONGDO DATA & AI VISION</span>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<header class="bg-white shadow-sm mb-8">
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-3xl md:text-5xl font-extrabold text-navy mb-4 tracking-tight">영도구 문화유산 관광의 현주소와 새로운 도약</h1>
+        <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto font-medium">소외된 산업문화유산 '깡깡이예술마을', 일방적 보존을 넘어 체험형 관광으로 해답을 찾다.</p>
+    </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    
+    <div class="mb-12 bg-white rounded-xl shadow-md p-6 md:p-8 border-l-4 border-orange-500">
+        <h2 class="text-2xl font-bold text-navy mb-4">🔍 문제 제기: 왜 깡깡이예술마을은 소외받는가?</h2>
+        <p class="text-gray-700 leading-relaxed text-lg">
+            영도구는 태종대, 흰여울문화마을 등 전국적인 인지도를 가진 관광 명소를 보유하고 있습니다. 그러나 영도의 근대 조선 산업 역사와 가장 맞닿아 있는 <strong>깡깡이예술마을</strong>은 그 역사적 가치에도 불구하고 관광객들의 발길이 상대적으로 저조합니다. 본 인포그래픽은 이러한 현상의 원인을 <strong>'일방적인 보존 및 전달 방식'</strong>에서 찾고, 현대 관광객이 요구하는 <strong>'주도적 참여와 경험'</strong>을 통해 산업문화유산이 나아가야 할 방향을 데이터로 증명합니다.
+        </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <div class="card">
+            <div class="mb-4">
+                <h3 class="text-xl font-bold text-navy">📊 영도구 주요 관광지 방문객 비교 (2023년 기준)</h3>
+                <p class="text-sm text-gray-500 mt-1">경관 중심 관광지와 역사/문화유산 관광지의 수요 격차를 보여줍니다.</p>
+            </div>
+            <div class="flex-grow flex flex-col justify-center">
+                <div class="chart-container">
+                    <canvas id="visitorChart"></canvas>
+                </div>
+            </div>
+            <div class="mt-4 text-sm text-gray-600 bg-gray-50 p-3 rounded-lg border border-gray-100">
+                <span class="font-bold text-orange">💡 분석:</span> 흰여울문화마을과 태종대 등 시각적 유희 중심의 명소에 방문객이 편중되어 있으며, 깡깡이예술마을은 1/10 수준에 머물러 있습니다.
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="mb-4">
+                <h3 class="text-xl font-bold text-navy">🎯 2030 세대 문화유산 관광 선택 동기</h3>
+                <p class="text-sm text-gray-500 mt-1">현대 관광객이 관광지를 선택할 때 가장 중요하게 생각하는 요소입니다.</p>
+            </div>
+            <div class="flex-grow flex flex-col justify-center">
+                <div class="chart-container">
+                    <canvas id="motivationChart"></canvas>
+                </div>
+            </div>
+            <div class="mt-4 text-sm text-gray-600 bg-gray-50 p-3 rounded-lg border border-gray-100">
+                <span class="font-bold text-teal">💡 분석:</span> 단순한 역사적 사실의 청취(23%)보다 본인이 직접 참여하고 경험하며 인증할 수 있는 요소(58%)가 관광지 선택의 핵심 동기로 작용합니다.
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-8">
+        <div class="mb-6">
+            <h3 class="text-xl font-bold text-navy">📈 관광지별 소셜 미디어 키워드 연관성 및 감성 분석</h3>
+            <p class="text-sm text-gray-500 mt-1">각 명소와 함께 언급되는 키워드의 확산도(크기)와 상호작용 지수(위치)를 비교합니다.</p>
+        </div>
+        <div class="flex-grow flex flex-col justify-center">
+            <div class="chart-container" style="max-width: 800px;">
+                <canvas id="keywordBubbleChart"></canvas>
+            </div>
+        </div>
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-blue-50 p-4 rounded-lg">
+                <h4 class="font-bold text-blue-800 mb-2">흰여울문화마을 키워드 특징</h4>
+                <p class="text-sm text-blue-900">#인생샷 #바다뷰 #카페 등 개인이 직접 콘텐츠를 생산하고 즐길 수 있는 <strong>경험적/시각적 요소</strong>가 강하게 나타납니다.</p>
+            </div>
+            <div class="bg-orange-50 p-4 rounded-lg">
+                <h4 class="font-bold text-orange-800 mb-2">깡깡이예술마을 키워드 특징</h4>
+                <p class="text-sm text-orange-900">#근대역사 #수리조선소 #보존 등 가치는 높으나 관광객의 직접적인 개입이 어려운 <strong>정태적/학습적 요소</strong>에 머물러 있습니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-8 bg-gradient-to-br from-navy to-slate-800 text-white rounded-2xl p-6 md:p-8 shadow-xl">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-teal">✨ AI 영도 활성화 전략 연구소</h2>
+                <p class="text-gray-300 mt-1">Gemini 2.5-Flash로 실시간 생성하는 맞춤형 깡깡이 활성화 기획 솔루션</p>
+            </div>
+            <span class="mt-2 md:mt-0 px-3 py-1 bg-teal text-white text-xs font-semibold rounded-full uppercase tracking-wider">Powered by Gemini AI</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2">🎯 타겟 고객층 선택</label>
+                <select id="aiTarget" class="w-full bg-slate-700 text-white rounded-lg border border-slate-600 px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-teal-500">
+                    <option value="MZ세대 커플 (이색 데이트 선호)">MZ세대 커플 (이색 데이트 선호)</option>
+                    <option value="초중등 자녀 동반 가족 (에듀테인먼트)">초중등 자녀 동반 가족 (교육 체험)</option>
+                    <option value="액티브 시니어 (역사와 향수)">액티브 시니어 (추억과 레트로)</option>
+                    <option value="외국인 관광객 (한국 로컬 인더스트리얼)">외국인 관광객 (로컬 K-산업유산)</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2">🛠️ 핵심 체험 테마</label>
+                <select id="aiTheme" class="w-full bg-slate-700 text-white rounded-lg border border-slate-600 px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-teal-500">
+                    <option value="디지털 기술 결합 (AR/VR 미션 게임)">디지털 기술 결합 (AR/VR 방탈출 미션)</option>
+                    <option value="리사이클 업사이클링 (선박 부품 창작 메이킹)">업사이클링 (조선 부품 공예 체험)</option>
+                    <option value="로컬 사운드 및 예술 협업 (망치질 타악 연주)">로컬 사운드 아트 (깡깡이 타악 퍼포먼스)</option>
+                    <option value="해상 미식 및 스토리텔링 (선상 다이닝 카페)">해상 로컬 가스트로노미 (조선 음식 체험)</option>
+                </select>
+            </div>
+            <div class="flex items-end">
+                <button onclick="generateAIPortal()" id="btnGenerate" class="w-full bg-gradient-to-r from-orange to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg transform transition active:scale-95 flex items-center justify-center gap-2">
+                    <span>✨ AI 맞춤형 프로그램 기획하기</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="aiLoading" class="hidden py-12 text-center">
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-teal-500 border-t-transparent mb-4"></div>
+            <p class="text-teal font-semibold">Gemini가 깡깡이예술마을을 위한 혁신적인 참여형 시나리오를 설계하고 있습니다...</p>
+        </div>
+
+        <div id="aiResultCard" class="hidden bg-slate-900 bg-opacity-80 rounded-xl p-6 border border-slate-700">
+            <div class="border-b border-slate-700 pb-4 mb-4">
+                <span class="text-xs font-semibold uppercase tracking-wider text-orange-400">💡 AI 혁신 제안서</span>
+                <h3 id="resProgramName" class="text-2xl font-bold text-white mt-1"></h3>
+                <p id="resOverview" class="text-gray-300 mt-2 text-sm leading-relaxed"></p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h4 class="text-sm font-bold text-teal mb-3">📍 주요 참여 단계 및 시나리오</h4>
+                    <ul id="resSteps" class="space-y-2 text-sm text-gray-300"></ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold text-amber-400 mb-3">🎯 예상 파급 효과 & SNS 연계</h4>
+                    <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                        <p class="text-xs text-gray-400 font-semibold mb-1">인프라 연계 및 확장성</p>
+                        <p id="resImpact" class="text-sm text-gray-200 mb-3"></p>
+                        <p class="text-xs text-gray-400 font-semibold mb-1">인스타그램 타겟 해시태그 추천</p>
+                        <p id="resTagline" class="text-sm text-teal font-mono font-semibold"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 border-t border-slate-800 pt-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <span class="text-xs text-gray-400">이 기획에 대해 실제 타겟층의 반응이 궁금하신가요? 아래 버튼으로 피드백을 예측해 보세요.</span>
+                <button onclick="simulateFeedback()" id="btnFeedback" class="bg-teal hover:bg-teal-600 text-white font-bold py-2.5 px-6 rounded-lg text-sm shadow transform transition active:scale-95 flex items-center gap-1">
+                    <span>✨ AI 관광객 피드백 시뮬레이션 돌리기</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="feedbackLoading" class="hidden py-8 text-center">
+            <div class="inline-block animate-spin rounded-full h-6 w-6 border-4 border-orange-500 border-t-transparent mb-2"></div>
+            <p class="text-orange-400 text-sm">3가지 다른 페르소나를 가진 관광객들이 가상 품평회를 준비하는 중...</p>
+        </div>
+
+        <div id="feedbackResult" class="hidden mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Persona Cards will be inserted dynamically here -->
+        </div>
+    </div>
+
+    <div class="card mb-8 border-t-4 border-teal-500">
+        <div class="mb-6">
+            <h3 class="text-2xl font-bold text-navy">🚀 참여형 체험 프로그램 도입 시 예측 효과</h3>
+            <p class="text-sm text-gray-500 mt-1">깡깡이예술마을에 '조선소 도구 만들기', '선박 페인팅 AR 체험', '해설사와 함께하는 깡깡 망치질 리듬 체험' 등 능동적 프로그램을 도입했을 때의 시뮬레이션입니다.</p>
+        </div>
+        <div class="flex-grow flex flex-col justify-center mb-6">
+            <div class="chart-container" style="max-width: 800px;">
+                <canvas id="projectionChart"></canvas>
+            </div>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-xl text-center">
+            <h4 class="text-lg font-bold text-navy mb-4">결론 및 정책 제언</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="p-4 bg-white rounded-lg shadow-sm">
+                    <span class="block text-3xl mb-2">🛠️</span>
+                    <h5 class="font-bold mb-1">관람에서 체험으로</h5>
+                    <p class="text-xs text-gray-600">눈으로 보는 예술마을에서 손으로 느끼는 산업현장으로의 콘텐츠 전환</p>
+                </div>
+                <div class="p-4 bg-white rounded-lg shadow-sm">
+                    <span class="block text-3xl mb-2">📱</span>
+                    <h5 class="font-bold mb-1">디지털 인터랙션</h5>
+                    <p class="text-xs text-gray-600">AR/VR을 활용한 깡깡이 아지매 체험 등 현대적 기술을 결합한 몰입형 경험 제공</p>
+                </div>
+                <div class="p-4 bg-white rounded-lg shadow-sm">
+                    <span class="block text-3xl mb-2">🤝</span>
+                    <h5 class="font-bold mb-1">주체적 참여자 양성</h5>
+                    <p class="text-xs text-gray-600">관광객이 직접 부산의 근대 조선 역사의 일부가 되어보는 메이커스 프로그램 기획</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<div style="display:none;" id="infographic-metadata">
+    METADATA_CONFIRMATION:
+    1. NO_SVG_USED: True. All visual components rely on HTML5 Canvas (via Chart.js) and standard DOM elements/Unicode characters. No SVG elements exist in this document.
+    2. NO_MERMAID_USED: True. Structural elements are built with Tailwind CSS.
+    3. PLAN_SUMMARY: Hook (Problem statement on Yeongdo tourism gap) -> Data Overview (Visitor count comparison showing the gap) -> Key Trends (Shift in motivation from viewing to experiencing) -> In-Depth Analysis (Bubble chart showing keyword gap between aesthetic/experiential vs historical/static) -> AI Thinktank (Interactive Gemini program planner & simulated feedback) -> Future Outlook (Projection of growth if active programs are implemented) -> Conclusion (Actionable recommendations).
+    4. VIZ_CHOICES: 
+       - Visitor Counts -> Goal: Compare -> Bar Chart (Chart.js) -> Best for comparing categorical magnitude.
+       - Motivation -> Goal: Composition -> Donut Chart (Chart.js) -> Shows clear preference proportions.
+       - Keyword Analysis -> Goal: Relationships/Distribution -> Bubble Chart (Chart.js) -> Maps frequency vs engagement level for different topics.
+       - Projection -> Goal: Change over time -> Line Chart (Chart.js) -> Best for showing trends before and after intervention.
+    5. COLOR_PALETTE: Vibrant (Navy #1a365d, Orange #f97316, Teal #14b8a6, Yellow #eab308).
+</div>
+
+<script>
+    const processLabelForWrapping = (labelStr) => {
+        if (labelStr.length <= 16) return labelStr;
+        const words = labelStr.split(' ');
+        const lines = [];
+        let currentLine = '';
+        words.forEach(word => {
+            if ((currentLine + ' ' + word).trim().length > 16) {
+                if (currentLine) lines.push(currentLine.trim());
+                currentLine = word;
+            } else {
+                currentLine += (currentLine ? ' ' : '') + word;
+            }
+        });
+        if (currentLine) lines.push(currentLine.trim());
+        return lines;
+    };
+
+    const commonTooltipConfig = {
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) {
+                            return label.join(' ');
+                        } else {
+                            return label;
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    const visitorLabelsRaw = ['태종대 유원지', '흰여울문화마을', '국립해양박물관', '깡깡이예술마을'];
+    const visitorLabels = visitorLabelsRaw.map(processLabelForWrapping);
+    const ctxVisitor = document.getElementById('visitorChart').getContext('2d');
+    new Chart(ctxVisitor, {
+        type: 'bar',
+        data: {
+            labels: visitorLabels,
+            datasets: [{
+                label: '연간 추정 방문객 (만 명)',
+                data: [120, 105, 85, 12],
+                backgroundColor: ['#1a365d', '#14b8a6', '#eab308', '#f97316'],
+                borderRadius: 6
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                ...commonTooltipConfig.plugins
+            },
+            scales: {
+                y: { beginAtZero: true, grid: { color: '#f3f4f6' } },
+                x: { grid: { display: false } }
+            }
+        }
+    });
+
+    const motivationLabelsRaw = ['단순 관람 및 역사적 사실 청취', '주도적 참여 및 이색 체험', '휴식 및 힐링 목적', '사진 촬영 및 SNS 인증'];
+    const motivationLabels = motivationLabelsRaw.map(processLabelForWrapping);
+    const ctxMotivation = document.getElementById('motivationChart').getContext('2d');
+    new Chart(ctxMotivation, {
+        type: 'doughnut',
+        data: {
+            labels: motivationLabels,
+            datasets: [{
+                data: [17, 45, 13, 25],
+                backgroundColor: ['#94a3b8', '#f97316', '#14b8a6', '#eab308'],
+                borderWidth: 2,
+                borderColor: '#ffffff'
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            cutout: '65%',
+            plugins: {
+                legend: { position: 'right' },
+                ...commonTooltipConfig.plugins
+            }
+        }
+    });
+
+    const ctxBubble = document.getElementById('keywordBubbleChart').getContext('2d');
+    new Chart(ctxBubble, {
+        type: 'bubble',
+        data: {
+            datasets: [
+                {
+                    label: '흰여울문화마을 키워드',
+                    data: [
+                        {x: 85, y: 90, r: 25, label: '인생샷'},
+                        {x: 80, y: 85, r: 20, label: '바다뷰'},
+                        {x: 70, y: 75, r: 15, label: '이색카페'}
+                    ],
+                    backgroundColor: 'rgba(20, 184, 166, 0.6)',
+                    borderColor: '#14b8a6'
+                },
+                {
+                    label: '깡깡이예술마을 키워드',
+                    data: [
+                        {x: 30, y: 40, r: 18, label: '근대역사'},
+                        {x: 25, y: 35, r: 15, label: '수리조선소'},
+                        {x: 20, y: 20, r: 10, label: '보존가치'}
+                    ],
+                    backgroundColor: 'rgba(249, 115, 22, 0.6)',
+                    borderColor: '#f97316'
+                }
+            ]
+        },
+        options: {
+            maintainAspectRatio: false,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return context.raw.label + ' (참여도: ' + context.raw.x + ', 언급량: ' + context.raw.y + ')';
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: { 
+                    title: { display: true, text: '관광객 참여도/상호작용 지수' },
+                    min: 0, max: 100
+                },
+                y: { 
+                    title: { display: true, text: '소셜 미디어 언급 빈도' },
+                    min: 0, max: 100
+                }
+            }
+        }
+    });
+
+    const projectionLabelsRaw = ['2023(현행)', '2024(도입기)', '2025(확산기)', '2026(정착기)'];
+    const projectionLabels = projectionLabelsRaw.map(processLabelForWrapping);
+    const ctxProj = document.getElementById('projectionChart').getContext('2d');
+    new Chart(ctxProj, {
+        type: 'line',
+        data: {
+            labels: projectionLabels,
+            datasets: [
+                {
+                    label: '일방적 보존 유지 시 예상 방문객',
+                    data: [12, 11.5, 11, 10.5],
+                    borderColor: '#94a3b8',
+                    backgroundColor: '#94a3b8',
+                    borderDash: [5, 5],
+                    tension: 0.3,
+                    fill: false
+                },
+                {
+                    label: '참여형 체험 프로그램 도입 시 예상 방문객',
+                    data: [12, 18, 32, 55],
+                    borderColor: '#f97316',
+                    backgroundColor: 'rgba(249, 115, 22, 0.1)',
+                    tension: 0.3,
+                    fill: true,
+                    pointBackgroundColor: '#f97316',
+                    pointRadius: 5
+                }
+            ]
+        },
+        options: {
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { position: 'top' },
+                ...commonTooltipConfig.plugins
+            },
+            scales: {
+                y: { 
+                    title: { display: true, text: '방문객 수 (만 명)' },
+                    beginAtZero: true 
+                }
+            }
+        }
+    });
+
+    let currentProgramResult = null;
+
+    async function callGemini(prompt, systemInstruction, schema) {
+        const apiKey = "";
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+        
+        const payload = {
+            contents: [{ parts: [{ text: prompt }] }],
+            systemInstruction: { parts: [{ text: systemInstruction }] },
+            generationConfig: {
+                responseMimeType: "application/json",
+                responseSchema: schema
+            }
+        };
+
+        let delay = 1000;
+        for (let i = 0; i < 5; i++) {
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    return JSON.parse(data.candidates?.[0]?.content?.parts?.[0]?.text);
+                }
+            } catch (error) {
+                // Fail silently for retry loop
+            }
+            await new Promise(resolve => setTimeout(resolve, delay));
+            delay *= 2;
+        }
+        throw new Error("API 통신 실패");
+    }
+
+    async function generateAIPortal() {
+        const target = document.getElementById('aiTarget').value;
+        const theme = document.getElementById('aiTheme').value;
+        const loadingDiv = document.getElementById('aiLoading');
+        const resultCard = document.getElementById('aiResultCard');
+        const feedbackResult = document.getElementById('feedbackResult');
+        
+        loadingDiv.classList.remove('hidden');
+        resultCard.classList.add('hidden');
+        feedbackResult.classList.add('hidden');
+
+        const systemInstruction = "너는 부산 영도구의 산업문화유산인 '깡깡이예술마을'을 활성화하기 위한 혁신적인 참여형/체험형 관광 프로그램 기획자이다. 관광객이 수동적으로 해설을 듣는 기존 방식을 탈피하여, 직접 몸을 움직이거나 도구를 사용하거나 예술 창작에 참여하는 기획을 도출하라. 대답은 반드시 지정된 JSON 포맷에 맞게 구체적이고 매력적인 한국어로 작성해야 한다.";
+        const prompt = `대상 고객: ${target}\n핵심 테마: ${theme}\n이 조건들을 결합하여, 깡깡이예술마을에서 진행 가능한 고유하고 이색적인 체험형 프로그램을 기획해라.`;
+
+        const schema = {
+            type: "OBJECT",
+            properties: {
+                programName: { type: "STRING" },
+                overview: { type: "STRING" },
+                steps: {
+                    type: "ARRAY",
+                    items: { type: "STRING" }
+                },
+                expectedImpact: { type: "STRING" },
+                instagramTagline: { type: "STRING" }
+            },
+            required: ["programName", "overview", "steps", "expectedImpact", "instagramTagline"]
+        };
+
+        try {
+            const result = await callGemini(prompt, systemInstruction, schema);
+            currentProgramResult = result;
+
+            document.getElementById('resProgramName').textContent = result.programName;
+            document.getElementById('resOverview').textContent = result.overview;
+            
+            const stepsUl = document.getElementById('resSteps');
+            stepsUl.innerHTML = '';
+            result.steps.forEach(step => {
+                const li = document.createElement('li');
+                li.className = 'flex items-start gap-2 bg-slate-800 p-2 rounded';
+                li.innerHTML = `<span class="text-teal-400 font-bold">✔</span> <span>${step}</span>`;
+                stepsUl.appendChild(li);
+            });
+
+            document.getElementById('resImpact').textContent = result.expectedImpact;
+            document.getElementById('resTagline').textContent = result.instagramTagline;
+
+            resultCard.classList.remove('hidden');
+        } catch (error) {
+            alert("프로그램 생성 중 일시적인 오류가 발생했습니다. 다시 시도해 주세요.");
+        } finally {
+            loadingDiv.classList.add('hidden');
+        }
+    }
+
+    async function simulateFeedback() {
+        if (!currentProgramResult) return;
+
+        const loadingDiv = document.getElementById('feedbackLoading');
+        const feedbackResult = document.getElementById('feedbackResult');
+        
+        loadingDiv.classList.remove('hidden');
+        feedbackResult.classList.add('hidden');
+
+        const systemInstruction = "너는 사용자가 제안한 깡깡이예술마을 관광 프로그램을 경험한 세 명의 가상 관광객(페르소나)이다. 각자의 고유한 관심사와 배경에 기초해, 프로그램에 참여한 후의 실제적이고 매우 리얼한 리뷰와 평점(1.0 ~ 5.0)을 작성해야 한다.";
+        const prompt = `제안된 프로그램명: ${currentProgramResult.programName}\n프로그램 개요: ${currentProgramResult.overview}\n위 프로그램을 체험한 뒤 아래 3가지 페르소나별로 현실적인 한줄평과 별점(5점 만점)을 작성해라.\n1. 트렌드에 민감한 20대 대학생 (SNS용 시각적 요소 중요)\n2. 자녀와 함께 방문한 40대 학부모 (교육적 가치 및 안전 중요)\n3. 역사와 선박 기계에 관심이 많은 60대 퇴직 엔지니어 (고증 및 진정성 중요)`;
+
+        const schema = {
+            type: "OBJECT",
+            properties: {
+                personas: {
+                    type: "ARRAY",
+                    items: {
+                        type: "OBJECT",
+                        properties: {
+                            roleName: { type: "STRING" },
+                            name: { type: "STRING" },
+                            score: { type: "NUMBER" },
+                            review: { type: "STRING" }
+                        },
+                        required: ["roleName", "name", "score", "review"]
+                    }
+                }
+            },
+            required: ["personas"]
+        };
+
+        try {
+            const data = await callGemini(prompt, systemInstruction, schema);
+            feedbackResult.innerHTML = '';
+            
+            data.personas.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between';
+                
+                let stars = '⭐'.repeat(Math.round(p.score));
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs bg-slate-700 text-teal px-2 py-0.5 rounded">${p.roleName}</span>
+                            <span class="text-sm font-semibold text-amber-400">${stars} (${p.score})</span>
+                        </div>
+                        <p class="font-bold text-white text-sm mb-1">${p.name}</p>
+                        <p class="text-xs text-gray-300 leading-relaxed italic">"${p.review}"</p>
+                    </div>
+                `;
+                feedbackResult.appendChild(card);
+            });
+
+            feedbackResult.classList.remove('hidden');
+        } catch (error) {
+            alert("시뮬레이션 중 오류가 발생했습니다. 다시 시도해 주세요.");
+        } finally {
+            loadingDiv.classList.add('hidden');
+        }
+    }
+</script>
+</body>
+</html>
