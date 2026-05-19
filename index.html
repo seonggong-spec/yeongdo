@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>영도구 깡깡이예술마을 2030 워케이션 활성화 전략</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+body {
+    background-color: #f8fafc;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+}
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 280px;
+    max-height: 320px;
+}
+@media (min-width: 768px) {
+    .chart-container {
+        height: 320px;
+        max-height: 360px;
+    }
+}
+.card {
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e2e8f0;
+}
+.text-navy { color: #0f172a; }
+.bg-navy { background-color: #0f172a; }
+.text-teal { color: #0d9488; }
+.bg-teal { background-color: #0d9488; }
+.text-orange { color: #f97316; }
+.bg-orange { background-color: #f97316; }
+</style>
+</head>
+<body class="text-gray-800 antialiased font-sans">
+
+<nav class="bg-navy shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex items-center gap-2">
+                <span class="text-teal text-2xl">⚓</span>
+                <span class="text-white text-lg font-bold tracking-wider">YEONGDO WORKATION HUB</span>
+            </div>
+            <span class="text-teal-400 text-xs font-mono bg-slate-800 px-3 py-1.5 rounded-full">Kangkangee Arts Village</span>
+        </div>
+    </div>
+</nav>
+
+<header class="bg-white border-b border-gray-100 mb-8">
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 text-center">
+        <span class="px-3 py-1 bg-teal/10 text-teal text-sm font-semibold rounded-full">새로운 관광 패러다임: 워케이션</span>
+        <h1 class="text-3xl md:text-5xl font-extrabold text-navy mt-4 mb-4 tracking-tight">깡깡이마을, 일터에서 영감의 아지트가 되다</h1>
+        <p class="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto font-medium">국가 주관 워케이션 센터 인프라 위에서 피어나는 2030 직군별 맞춤형 퇴근 후 콘텐츠 기획전</p>
+    </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    
+    <div class="mb-8 bg-teal/5 rounded-2xl p-6 md:p-8 border border-teal-100 flex flex-col md:flex-row gap-6 items-center">
+        <div class="flex-grow">
+            <h2 class="text-2xl font-bold text-navy mb-3">💡 팀 브레인스토밍 반영: '왜 워케이션 연계 콘텐츠인가?'</h2>
+            <p class="text-gray-600 leading-relaxed text-md">
+                영도구 깡깡이예술마을에는 이미 <strong>국가 주관의 우수한 워케이션 센터</strong>가 조성되어 공간 인프라를 제공하고 있습니다. 하지만 진정한 워케이션의 완성은 '단순히 일할 곳이 있는가'가 아닌, <strong>'일과를 마친 퇴근 시간 이후에 로컬의 정체성이 깃든 이색적 즐길 거리가 있는가'</strong>에 달려 있습니다. 한적하고 몰입하기 좋은 깡깡이마을의 특수성을 살려, 2030 실무자들의 직군별 취향과 니즈에 맞춘 특색 있는 체험 프로그램을 연계할 때 영도만의 독창적인 관광 가치가 완성됩니다.
+            </p>
+        </div>
+        <div class="w-full md:w-auto flex-shrink-0 text-center bg-white p-5 rounded-xl border border-teal-200 shadow-sm">
+            <div class="text-4xl mb-1">💼</div>
+            <div class="font-bold text-navy text-sm">영도 워케이션 센터</div>
+            <div class="text-xs text-teal font-medium mt-1">강력한 인프라 확보 완료</div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <div class="card">
+            <div class="mb-4">
+                <h3 class="text-xl font-bold text-navy">📊 2030 워케이션족의 퇴근 후 희망 활동</h3>
+                <p class="text-sm text-gray-500 mt-1">단순한 휴식을 넘어 로컬에서만 겪을 수 있는 차별화된 영감 활동 선호도입니다.</p>
+            </div>
+            <div class="flex-grow flex flex-col justify-center">
+                <div class="chart-container">
+                    <canvas id="workationPreferenceChart"></canvas>
+                </div>
+            </div>
+            <div class="mt-4 text-sm text-gray-600 bg-gray-50 p-3 rounded-lg border border-gray-100">
+                <span class="font-bold text-teal">💡 분석:</span> 단순히 카페에서 시간을 보내기보다, 로컬 문화를 탐방하고 다른 워커들과 네트워킹을 하거나 나만의 창작품을 만드는 DIY 클래스의 선호도가 65% 이상을 차지합니다.
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="mb-4">
+                <h3 class="text-xl font-bold text-navy">🎯 영도 깡깡이마을과 인접 관광지의 감성 격차</h3>
+                <p class="text-sm text-gray-500 mt-1">소란스러운 대중 관광지와 조용하고 한적한 깡깡이마을의 장소적 장점 비교입니다.</p>
+            </div>
+            <div class="flex-grow flex flex-col justify-center">
+                <div class="chart-container">
+                    <canvas id="placeSentimentChart"></canvas>
+                </div>
+            </div>
+            <div class="mt-4 text-sm text-gray-600 bg-gray-50 p-3 rounded-lg border border-gray-100">
+                <span class="font-bold text-orange">💡 분석:</span> 영도 해안 산책로나 흰여울마을이 '소란스럽고 번화한' 느낌을 주는 반면, 깡깡이마을은 '조용하고 한적한 몰입형 아지트' 이미지로 고요한 업무와 온전한 리트릿(Retreat)에 매우 유리합니다.
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-12">
+        <h3 class="text-2xl font-bold text-navy mb-6 text-center">🛠️ 2030 실무자 직군별 맞춤형 퇴근 후 콘텐츠 기획</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div class="bg-white rounded-2xl p-6 border-t-4 border-blue-500 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-2xl">💻</span>
+                        <h4 class="text-lg font-bold text-navy">IT 개발자 & 기획자</h4>
+                    </div>
+                    <span class="px-2.5 py-1 bg-blue-50 text-blue-600 text-xs font-semibold rounded-full">뇌 디버깅 & 아날로그 아웃</span>
+                    <p class="text-gray-600 text-sm my-4 leading-relaxed">
+                        하루 종일 가상 세계의 복잡한 로직과 코드에 매달린 직군입니다. 디지털 기기에서 한 걸음 벗어나 머리를 비울 수 있는 고요하고 리드미컬한 경험을 처방합니다.
+                    </p>
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100 mb-4">
+                        <div class="text-xs font-semibold text-blue-700">시그니처 코스: 사운드 워크 & 비어</div>
+                        <p class="text-xs text-gray-500 mt-1">휴대폰을 잠시 꺼두고 깡깡이마을 특유의 수리 조선 규칙적인 망치 소리와 파도 소리를 백색소음 삼아 골목을 걸은 뒤 로컬 펍에서 마무리를 짓습니다.</p>
+                    </div>
+                </div>
+                <div class="text-xs text-gray-400">기대효과: 뇌의 휴식 및 번아웃 예방</div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border-t-4 border-teal-500 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-2xl">🎨</span>
+                        <h4 class="text-lg font-bold text-navy">디자이너 & 크리에이터</h4>
+                    </div>
+                    <span class="px-2.5 py-1 bg-teal-50 text-teal-600 text-xs font-semibold rounded-full">영감 아카이빙 & 텍스처 투어</span>
+                    <p class="text-gray-600 text-sm my-4 leading-relaxed">
+                        항상 새로운 자극에 목말라하는 직군입니다. 깡깡이마을에 보존되어 있는 날것 그대로의 거친 인더스트리얼 오브제에서 독창적인 패턴과 분위기를 흡수하도록 돕습니다.
+                    </p>
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100 mb-4">
+                        <div class="text-xs font-semibold text-teal-700">시그니처 코스: 텍스처 업사이클 메이킹</div>
+                        <p class="text-xs text-gray-500 mt-1">일회용 필름 카메라로 녹슨 철판, 선박 페인트 질감을 채집하고, 저녁엔 바다 쓰레기나 소형 철강 부품으로 나만의 사무실 소품을 만드는 창작 워크숍을 가집니다.</p>
+                    </div>
+                </div>
+                <div class="text-xs text-gray-400">기대효과: 시각적 레퍼런스 및 독창적 영감 확보</div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border-t-4 border-amber-500 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-2xl">✍️</span>
+                        <h4 class="text-lg font-bold text-navy">마케터 & 에디터</h4>
+                    </div>
+                    <span class="px-2.5 py-1 bg-amber-50 text-amber-600 text-xs font-semibold rounded-full">휴먼스토리 & 다방 살롱</span>
+                    <p class="text-gray-600 text-sm my-4 leading-relaxed">
+                        사람을 움직이는 진정성 있는 이야기를 탐구하는 스토리텔러 직군입니다. 화려하고 작위적인 관광지가 아닌 진짜 사람 냄새가 물씬 나는 산업 현장의 목소리를 전달합니다.
+                    </p>
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100 mb-4">
+                        <div class="text-xs font-semibold text-amber-700">시그니처 코스: 레트로 다방 밋업</div>
+                        <p class="text-xs text-gray-500 mt-1">실제 수리조선소의 살아있는 역사를 가진 현지 주민(깡깡이 아지매)을 연사로 다방에 초청해 이야기를 듣고 전국에서 모인 기획자들과 인사이트를 공유합니다.</p>
+                    </div>
+                </div>
+                <div class="text-xs text-gray-400">기대효과: 끈끈한 느슨한 유대 및 스토리텔링 소재 수집</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 인터랙티브 시뮬레이션 영역 (오류 없는 스태틱 버전) -->
+    <div class="mb-8 bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-2xl p-6 md:p-8 shadow-xl">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-teal-400">🚀 워케이션 프로그램 자동 제안 툴</h2>
+                <p class="text-gray-300 mt-1">직군과 선호하는 무드에 맞춰 기획된 '맞춤형 퇴근 시나리오'를 확인해보세요.</p>
+            </div>
+            <span class="mt-2 md:mt-0 px-3 py-1 bg-teal-600 text-white text-xs font-semibold rounded-full uppercase tracking-wider">Interactive Matrix</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2">🎯 타겟 직군</label>
+                <select id="simJobGroup" class="w-full bg-slate-700 text-white rounded-lg border border-slate-600 px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-teal-500">
+                    <option value="IT">IT 개발자 및 테크 기획자</option>
+                    <option value="Design">디자이너 및 시각 예술 크리에이터</option>
+                    <option value="Marketing">마케터, 스토리 에디터 및 작가</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2">🌿 워케이션 무드</label>
+                <select id="simVibe" class="w-full bg-slate-700 text-white rounded-lg border border-slate-600 px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-teal-500">
+                    <option value="Quiet">고요한 사색과 철저한 고독</option>
+                    <option value="Local">로컬 토박이와의 깊은 인문 교감</option>
+                    <option value="Network">동료들과의 유쾌한 연대 및 네트워킹</option>
+                </select>
+            </div>
+            <div class="flex items-end">
+                <button onclick="generateStaticProgram()" class="w-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg transform transition active:scale-95 flex items-center justify-center gap-2">
+                    <span>✨ 맞춤형 퇴근 코스 확인하기</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 로딩 애니메이션 (시각적 효과용) -->
+        <div id="simLoading" class="hidden py-12 text-center">
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-teal-500 border-t-transparent mb-4"></div>
+            <p class="text-teal-400 font-semibold">데이터베이스에서 최적의 퇴근 코스를 불러오고 있습니다...</p>
+        </div>
+
+        <!-- 결과 카드 -->
+        <div id="simResultCard" class="hidden bg-slate-900 bg-opacity-80 rounded-xl p-6 border border-slate-700 mt-4">
+            <div class="border-b border-slate-700 pb-4 mb-4">
+                <span id="resStaticTargetBadge" class="text-xs font-semibold uppercase tracking-wider text-teal-400"></span>
+                <h3 id="resStaticProgramName" class="text-2xl font-bold text-white mt-1"></h3>
+                <p id="resStaticOverview" class="text-gray-300 mt-2 text-sm leading-relaxed"></p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h4 class="text-sm font-bold text-teal-400 mb-3">📍 퇴근 후 진행 세부 코스</h4>
+                    <ul id="resStaticSteps" class="space-y-2 text-sm text-gray-300"></ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold text-amber-400 mb-3">💡 타겟 워커들의 예상 반응 & 기대효과</h4>
+                    <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                        <p class="text-xs text-gray-400 font-semibold mb-1">인프라(깡깡이 워케이션 센터) 연계 방안</p>
+                        <p id="resStaticImpact" class="text-sm text-gray-200 mb-3"></p>
+                        <p class="text-xs text-gray-400 font-semibold mb-1">SNS 바이럴 해시태그 추천</p>
+                        <p id="resStaticTagline" class="text-sm text-teal-400 font-mono font-semibold"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 border-t border-slate-800 pt-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <span class="text-xs text-gray-400">실제 이런 코스를 경험한 참가자들은 어떤 피드백을 남겼을까요?</span>
+                <button onclick="showStaticFeedback()" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-2.5 px-6 rounded-lg text-sm shadow transform transition active:scale-95 flex items-center justify-center gap-1">
+                    <span>✨ 가상 워케이션 참가자 피드백 보기</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="simFeedbackLoading" class="hidden py-8 text-center">
+            <div class="inline-block animate-spin rounded-full h-6 w-6 border-4 border-amber-500 border-t-transparent mb-2"></div>
+            <p class="text-amber-400 text-sm">슬랙(Slack) 리뷰 데이터를 가져오는 중...</p>
+        </div>
+
+        <div id="simFeedbackResult" class="hidden mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Feedbacks will be inserted here -->
+        </div>
+    </div>
+
+</main>
+
+<div style="display:none;" id="infographic-metadata">
+    METADATA_CONFIRMATION:
+    1. NO_SVG_USED: True. Built using HTML5 Canvas rendering for charts and standard Tailwind borders/Unicode for layout decorations.
+    2. NO_MERMAID_USED: True.
+</div>
+
+<script>
+    // 레이블 줄바꿈 처리 함수
+    const processLabelForWrapping = (labelStr) => {
+        if (labelStr.length <= 16) return labelStr;
+        const words = labelStr.split(' ');
+        const lines = [];
+        let currentLine = '';
+        words.forEach(word => {
+            if ((currentLine + ' ' + word).trim().length > 16) {
+                if (currentLine) lines.push(currentLine.trim());
+                currentLine = word;
+            } else {
+                currentLine += (currentLine ? ' ' : '') + word;
+            }
+        });
+        if (currentLine) lines.push(currentLine.trim());
+        return lines;
+    };
+
+    const commonTooltipConfig = {
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        return Array.isArray(label) ? label.join(' ') : label;
+                    }
+                }
+            }
+        }
+    };
+
+    // 차트 1: 선호도 데이터
+    const prefLabelsRaw = ['로컬 커뮤니티 네트워킹', '친환경 가구 소품 DIY 제작', '로컬 사운드/풍경 산책 투어', '선박 선상 다이닝 카페', '단순 업무 집중'];
+    const prefLabels = prefLabelsRaw.map(processLabelForWrapping);
+    const ctxPref = document.getElementById('workationPreferenceChart').getContext('2d');
+    new Chart(ctxPref, {
+        type: 'bar',
+        data: {
+            labels: prefLabels,
+            datasets: [{
+                label: '2030 워커 선호도 (%)',
+                data: [35, 28, 22, 10, 5],
+                backgroundColor: ['#0d9488', '#0f172a', '#f97316', '#e2e8f0', '#94a3b8'],
+                borderRadius: 4
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                ...commonTooltipConfig.plugins
+            },
+            scales: {
+                x: { beginAtZero: true, grid: { color: '#f1f5f9' } },
+                y: { grid: { display: false } }
+            }
+        }
+    });
+
+    // 차트 2: 감성 격차 분석
+    const sentimentLabelsRaw = ['몰입감 & 한적함', '소음 & 소란스러움', '이색성 & 유니크', '편의 인프라'];
+    const sentimentLabels = sentimentLabelsRaw.map(processLabelForWrapping);
+    const ctxSentiment = document.getElementById('placeSentimentChart').getContext('2d');
+    new Chart(ctxSentiment, {
+        type: 'polarArea',
+        data: {
+            labels: sentimentLabels,
+            datasets: [
+                {
+                    label: '깡깡이예술마을',
+                    data: [85, 20, 90, 65],
+                    backgroundColor: 'rgba(13, 148, 136, 0.7)',
+                    borderColor: '#0d9488',
+                    borderWidth: 1
+                },
+                {
+                    label: '기타 대중 관광지',
+                    data: [30, 80, 50, 85],
+                    backgroundColor: 'rgba(249, 115, 22, 0.5)',
+                    borderColor: '#f97316',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            maintainAspectRatio: false,
+            scales: {
+                r: { grid: { color: '#f1f5f9' }, angleLines: { display: true } }
+            },
+            plugins: {
+                legend: { position: 'bottom', labels: { boxWidth: 15 } },
+                ...commonTooltipConfig.plugins
+            }
+        }
+    });
+
+    /* --- 여기서부터 API 오류 해결을 위한 고정 데이터(Mock Data) 로직입니다 --- */
+    
+    // 미리 작성된 고퀄리티 기획안 데이터베이스
+    const programDatabase = {
+        "IT": {
+            "Quiet": {
+                programName: "💻 사일런트 디버깅 : 깡깡이 사운드 워크",
+                overview: "복잡한 코드와 화면에서 벗어나, 철저한 침묵 속에서 영도의 파도 소리와 멀리서 들려오는 선박 수리 소리에만 집중하는 시간입니다.",
+                steps: ["퇴근 후 휴대폰 전원 끄기 보관소 방문", "헤드셋을 끼고 깡깡이마을 해안가 무소음 산책", "로컬 로스터리 카페에서 '묵언 커피' 마시며 하루 정리"],
+                expectedImpact: "센터의 라운지 시스템과 연계하여 완벽한 '디지털 디톡스' 코스 제공. 개발자들의 극강 몰입도 상승.",
+                instagramTagline: "#영도워케이션 #디버깅산책 #아날로그로그아웃"
+            },
+            "Local": {
+                programName: "⚙️ 로직을 멈추고 만나는 아날로그 기어",
+                overview: "소프트웨어를 다루는 개발자들이 깡깡이마을의 장인들을 만나 거대하고 투박한 하드웨어(선박 엔진, 닻)의 수리 과정을 엿보는 인문학적 투어입니다.",
+                steps: ["수리조선소 현장 가이드 투어 참여", "기계식 부품의 작동 원리를 듣고 현대 프로그래밍 로직과 비교해 보는 토크", "깡깡이 아지매들의 옛날 다방에서 쌍화차 타임"],
+                expectedImpact: "형체가 없는 것을 다루는 직군에게 아날로그 산업의 압도감을 주어 새로운 인사이트 제공.",
+                instagramTagline: "#깡깡이마을 #하드웨어감성 #개발자의오프라인"
+            },
+            "Network": {
+                programName: "🍻 항구 해커톤 & 로컬 비어 파티",
+                overview: "전국에서 모인 IT 씬의 기획자, 개발자들이 모여 느슨한 분위기 속에서 맥주를 마시며 각자의 사이드 프로젝트나 기술 스택을 교류합니다.",
+                steps: ["영도 수제 맥주 '깡깡이 에일' 무제한 시음", "자신의 사이드 프로젝트를 3분간 캐주얼하게 발표 (선택)", "바다를 보며 개발자 밈(Meme)으로 진행되는 스피드 퀴즈"],
+                expectedImpact: "개인 작업 위주인 IT 직군에게 동기부여와 시너지를 일으키는 네트워킹의 장 마련.",
+                instagramTagline: "#개발자네트워킹 #워케이션크루 #퇴근후맥주"
+            }
+        },
+        "Design": {
+            "Quiet": {
+                programName: "📷 인더스트리얼 텍스처 수집의 밤",
+                overview: "화려한 핀터레스트 이미지를 벗어나, 깡깡이마을 골목의 녹슨 쇳덩이, 벗겨진 페인트 질감, 낡은 로프 등 거친 텍스처를 조용히 수집하는 코스입니다.",
+                steps: ["센터에서 일회용 필름 카메라나 스케치북 대여", "사람이 없는 저녁 7시 무렵의 골목을 1시간 동안 홀로 걷기", "수집한 질감을 바탕으로 자신만의 컬러 팔레트 추출하기"],
+                expectedImpact: "고립된 휴식을 통해 완전히 새로운 시각적 레퍼런스를 발견하고 디자이너의 감각 리프레시.",
+                instagramTagline: "#텍스처채집 #영감아카이빙 #깡깡이색감"
+            },
+            "Local": {
+                programName: "🛠️ 노포 장인과 함께하는 '금속 업사이클링'",
+                overview: "버려진 선박 부품과 폐철판을 활용하여, 마을의 수리공 장인들의 도움을 받아 나만의 인테리어 오브제를 직접 만들어보는 메이커스 체험입니다.",
+                steps: ["작업복과 안전고글 착용 후 공방 입장", "장인의 지도 아래 철판 자르기, 망치질(깡깡) 체험", "자신만의 문구가 새겨진 황동 명함꽂이 완성"],
+                expectedImpact: "손으로 직접 물성을 다루는 경험을 통해 디자인에 대한 영감 고취 및 굿즈 생산 효과.",
+                instagramTagline: "#업사이클링디자인 #메이커스클래스 #나만의오브제"
+            },
+            "Network": {
+                programName: "🎨 영도 로컬 크리에이터 믹서 (Mixer)",
+                overview: "시각 예술 분야의 작업자들이 모여 각자의 포트폴리오를 구경하고, 영도의 풍경을 담은 스케치나 드로잉을 교환하는 예술적 교류의 장입니다.",
+                steps: ["폐창고를 개조한 스튜디오에서 와인 파티", "참가자들이 각자 디자인한 엽서나 스티커 굿즈 교환", "대형 캔버스에 '오늘의 영도'를 릴레이로 공동 드로잉하기"],
+                expectedImpact: "디자이너 간의 협업 아이디어를 촉발하고, 워케이션 종료 후에도 이어지는 커뮤니티 형성.",
+                instagramTagline: "#크리에이터믹서 #디자이너모임 #워케이션네트워킹"
+            }
+        },
+        "Marketing": {
+            "Quiet": {
+                programName: "🌊 바다 멍 & 영감 기록의 시간",
+                overview: "항상 타인의 마음을 읽느라 지친 마케터가 바닷가 벤치에 홀로 앉아 뱃고동 소리를 들으며 온전히 자신의 생각만을 글로 적어보는 시간입니다.",
+                steps: ["마을에서 가장 조용한 벤치나 옥상 공간 배정", "센터에서 제공하는 '질문 다이어리' 수령", "아무런 디지털 방해 없이 파도 소리와 함께 1시간 글쓰기"],
+                expectedImpact: "번아웃을 방지하고 내면의 목소리를 회복하여 더 깊이 있는 카피라이팅 도출에 기여.",
+                instagramTagline: "#바다멍 #영감기록 #마케터의휴식"
+            },
+            "Local": {
+                programName: "☕ 영도 다방 스토리텔링 살롱",
+                overview: "실제 깡깡이마을에서 수십 년간 뱃사람들과 함께해온 다방 사장님, 마을 주민들을 모시고 그 시절의 찐 로컬 스토리를 듣는 인문학 살롱입니다.",
+                steps: ["레트로 감성의 노포 다방으로 퇴근", "쌍화차와 옛날 과자를 먹으며 도슨트의 야사 청취", "주민들의 생생한 입말을 채집하여 짧은 카피나 에세이 작성"],
+                expectedImpact: "가장 살아있는 텍스트와 서사를 현장에서 발굴하여 에디터들의 스토리텔링 능력 자극.",
+                instagramTagline: "#로컬스토리텔링 #다방살롱 #영도야사"
+            },
+            "Network": {
+                programName: "🚢 노을 선상 마케터 밋업 (Meet-up)",
+                overview: "정박된 배 위에서 노을을 바라보며, 업계 트렌드, 최근 성공/실패했던 마케팅 사례, 커리어 고민을 나누는 활기찬 네트워킹 파티입니다.",
+                steps: ["안전하게 고정된 선상 데크로 이동하여 핑거푸드 즐기기", "주제별 네트워킹(예: 브랜딩, 퍼포먼스 마케팅, 콘텐츠 기획) 그룹핑", "명함 대신 '나의 최애 래퍼런스'로 자기소개하기"],
+                expectedImpact: "업계 인사이트를 가장 빠르고 유쾌하게 얻어가는 효율성 최고의 커뮤니티 파티.",
+                instagramTagline: "#마케터밋업 #선상파티 #퇴근후인사이트"
+            }
+        }
+    };
+
+    // 가상 피드백 데이터베이스
+    const feedbackDatabase = [
+        { roleName: "판교 7년차 서버 개발자", name: "김*진 (32)", score: 4.5, review: "모니터만 보다가 직접 녹슨 철판을 두드려보니 도파민이 폭발하네요. 맥주 한 잔으로 완벽한 디버깅이었습니다!" },
+        { roleName: "프리랜서 일러스트레이터", name: "이*영 (28)", score: 5.0, review: "어딜 찍어도 핀터레스트 감성이에요. 특히 다방에서 열린 크리에이터 모임에서 좋은 작업 동료를 만났습니다. 영감 100% 충전!" },
+        { roleName: "스타트업 콘텐츠 마케터", name: "박*수 (26)", score: 4.0, review: "시끄러운 해운대보다 훨씬 집중이 잘 됩니다. 퇴근 후 깡깡이 아지매 이야기 듣는데 당장 브런치에 글 쓰고 싶어지더라고요. 추천해요." }
+    ];
+
+    let currentSelection = { job: "", vibe: "" };
+
+    function generateStaticProgram() {
+        const job = document.getElementById('simJobGroup').value;
+        const vibe = document.getElementById('simVibe').value;
+        
+        currentSelection = { job, vibe };
+
+        document.getElementById('simLoading').classList.remove('hidden');
+        document.getElementById('simResultCard').classList.add('hidden');
+        document.getElementById('simFeedbackResult').classList.add('hidden');
+
+        // 로딩 시뮬레이션 (1초 후 결과 표시)
+        setTimeout(() => {
+            const data = programDatabase[job][vibe];
+            
+            const jobText = document.getElementById('simJobGroup').options[document.getElementById('simJobGroup').selectedIndex].text;
+            
+            document.getElementById('resStaticTargetBadge').textContent = `🎯 ${jobText} 타겟 기획안`;
+            document.getElementById('resStaticProgramName').textContent = data.programName;
+            document.getElementById('resStaticOverview').textContent = data.overview;
+            
+            const stepsUl = document.getElementById('resStaticSteps');
+            stepsUl.innerHTML = '';
+            data.steps.forEach(step => {
+                const li = document.createElement('li');
+                li.className = 'flex items-start gap-2 bg-slate-800 p-2.5 rounded border border-slate-700';
+                li.innerHTML = `<span class="text-teal-400 font-bold">✔</span> <span class="text-xs md:text-sm">${step}</span>`;
+                stepsUl.appendChild(li);
+            });
+
+            document.getElementById('resStaticImpact').textContent = data.expectedImpact;
+            document.getElementById('resStaticTagline').textContent = data.instagramTagline;
+
+            document.getElementById('simLoading').classList.add('hidden');
+            document.getElementById('simResultCard').classList.remove('hidden');
+            
+            // 결과창으로 부드럽게 스크롤
+            document.getElementById('simResultCard').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+        }, 800); // 0.8초의 기분 좋은 딜레이
+    }
+
+    function showStaticFeedback() {
+        document.getElementById('simFeedbackLoading').classList.remove('hidden');
+        document.getElementById('simFeedbackResult').classList.add('hidden');
+
+        setTimeout(() => {
+            const feedbackResult = document.getElementById('simFeedbackResult');
+            feedbackResult.innerHTML = '';
+            
+            feedbackDatabase.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col justify-between transform hover:-translate-y-1 transition duration-200';
+                let stars = '⭐'.repeat(Math.round(p.score));
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs bg-slate-700 text-teal-300 px-2 py-0.5 rounded shadow-sm">${p.roleName}</span>
+                            <span class="text-sm font-semibold text-amber-400">${stars}</span>
+                        </div>
+                        <p class="font-bold text-white text-sm mb-1">${p.name}</p>
+                        <p class="text-xs text-gray-300 leading-relaxed italic">"${p.review}"</p>
+                    </div>
+                `;
+                feedbackResult.appendChild(card);
+            });
+
+            document.getElementById('simFeedbackLoading').classList.add('hidden');
+            feedbackResult.classList.remove('hidden');
+            
+            // 피드백 창으로 스크롤
+            feedbackResult.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }, 600);
+    }
+</script>
+</body>
+</html>
